@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magnolia Made Cookies — CT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Zilla+Slab:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--pink:#F2D5D5;--pink-deep:#E8AEAE;--peach:#FDE8D6;--mint:#D4E8D4;--brown:#3D2B1F;--brown-light:#7A6655;--cream:#FFFBF5;--white:#FFFFFF;--yellow:#FCE6A5;--shadow:0 4px 20px rgba(61,43,31,.06)}
+    html{scroll-behavior:smooth}
+    body{font-family:'Quicksand',sans-serif;color:var(--brown);background:var(--cream);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    /* Nav */
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,251,245,.95);backdrop-filter:blur(8px);border-bottom:2px solid var(--pink);padding:0 1rem}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
+    .nav-logo{font-family:'Zilla Slab',serif;font-size:1.15rem;font-weight:600;color:var(--brown)}.nav-logo span{font-size:.8rem;color:var(--pink-deep);font-weight:400}
+    .nav-links{display:flex;gap:1.2rem;list-style:none}
+    .nav-links a{font-size:.8rem;font-weight:600;color:var(--brown-light);transition:color .2s;padding:.35rem 0}
+    .nav-links a:hover{color:var(--brown)}
+    .nav-cta{background:var(--pink-deep);color:var(--white)!important;padding:.35rem 1.2rem!important;border-radius:50px}
+    .nav-cta:hover{background:var(--brown)!important;color:var(--white)!important}
+    @media(max-width:640px){.nav-links{display:none}}
+    /* Hero */
+    .hero{background:linear-gradient(180deg,var(--peach) 0%,var(--cream) 100%);padding:4rem 1rem 3rem;text-align:center;position:relative}
+    .hero-badge{display:inline-block;background:var(--pink);padding:.3rem 1.2rem;border-radius:50px;font-size:.75rem;font-weight:600;color:var(--brown);margin-bottom:1rem}
+    .hero h1{font-family:'Zilla Slab',serif;font-size:clamp(2.2rem,6vw,4rem);line-height:1.1;margin-bottom:.75rem;font-weight:600}
+    .hero h1 em{font-style:italic;color:var(--pink-deep)}
+    .hero p{font-size:1.1rem;color:var(--brown-light);max-width:480px;margin:0 auto 1.5rem;line-height:1.7}
+    .btn-group{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+    .btn{font-family:'Quicksand',sans-serif;font-size:.85rem;font-weight:700;padding:.75rem 2rem;border-radius:50px;border:none;cursor:pointer;transition:all .2s;display:inline-block}
+    .btn-primary{background:var(--brown);color:var(--cream)}.btn-primary:hover{background:var(--brown-light);transform:translateY(-2px)}
+    .btn-secondary{background:var(--white);color:var(--brown);border:2px solid var(--pink-deep)}.btn-secondary:hover{background:var(--pink);border-color:var(--pink-deep)}
+    /* Cookie carousel dots */
+    .cookie-showcase{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem}
+    .cookie-dot{width:80px;height:80px;background:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;box-shadow:var(--shadow);transition:transform .2s}
+    .cookie-dot:hover{transform:scale(1.1)}
+    .cookie-dot span{font-size:2rem;line-height:1}
+    /* Sections */
+    section{padding:4rem 1rem}
+    .inner{max-width:1000px;margin:0 auto}
+    .label{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--pink-deep);margin-bottom:.35rem}
+    h2{font-family:'Zilla Slab',serif;font-size:clamp(1.5rem,3.5vw,2.4rem);font-weight:600;line-height:1.2;margin-bottom:1rem}
+    h2 em{font-style:italic;color:var(--pink-deep)}
+    /* About */
+    #about{background:var(--white)}
+    .about-wrap{display:flex;gap:3rem;align-items:center;flex-wrap:wrap}
+    .about-photo{width:280px;height:280px;background:linear-gradient(135deg,var(--peach),var(--pink));border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;flex-shrink:0}
+    .about-photo .emoji{font-size:3rem;margin-bottom:.5rem}
+    .about-photo p{font-family:'Zilla Slab',serif;font-size:1rem;opacity:.8}
+    .about-text{flex:1;min-width:260px}
+    .about-text p{font-size:.95rem;color:var(--brown-light);margin-bottom:.8rem;line-height:1.75}
+    .about-signature{font-family:'Zilla Slab',serif;font-style:italic;font-size:1.2rem;color:var(--pink-deep);display:block;margin-top:1rem}
+    /* Cookies section — icon grid */
+    #cookies{background:var(--cream)}
+    .cookie-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
+    @media(max-width:640px){.cookie-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:400px){.cookie-grid{grid-template-columns:1fr}}
+    .c-item{background:var(--white);border-radius:16px;padding:1.5rem;text-align:center;box-shadow:var(--shadow);transition:transform .2s}
+    .c-item:hover{transform:translateY(-3px)}
+    .c-item .emoji{font-size:2rem;margin-bottom:.5rem}
+    .c-item h3{font-family:'Zilla Slab',serif;font-size:1rem;font-weight:600;margin-bottom:.25rem}
+    .c-item p{font-size:.82rem;color:var(--brown-light);line-height:1.5}
+    /* Process — cards */
+    #process{background:var(--peach)}
+    .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.5rem}
+    @media(max-width:700px){.process-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:400px){.process-grid{grid-template-columns:1fr}}
+    .p-card{background:var(--white);border-radius:16px;padding:1.5rem;text-align:center;box-shadow:var(--shadow)}
+    .p-card .num{display:inline-block;width:36px;height:36px;background:var(--pink-deep);color:var(--white);border-radius:50%;line-height:36px;font-weight:700;font-size:.85rem;margin-bottom:.75rem}
+    .p-card h3{font-family:'Zilla Slab',serif;font-size:.95rem;font-weight:600;margin-bottom:.35rem}
+    .p-card p{font-size:.8rem;color:var(--brown-light);line-height:1.5}
+    /* Contact */
+    #contact{background:var(--white)}
+    .contact-flex{display:flex;gap:3rem;flex-wrap:wrap}
+    .contact-info{flex:1;min-width:240px}
+    .contact-info p{font-size:.9rem;color:var(--brown-light);margin-bottom:1rem;line-height:1.7}
+    .detail{display:flex;gap:.6rem;margin-bottom:.6rem;font-size:.85rem;color:var(--brown-light)}
+    .detail strong{display:block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--brown)}
+    form{flex:2;min-width:280px;background:var(--cream);border-radius:16px;padding:2rem;border:2px solid var(--pink)}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    @media(max-width:500px){.form-row{grid-template-columns:1fr}}
+    label{display:block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brown);margin-bottom:.3rem}
+    input,select,textarea{width:100%;padding:.7rem .9rem;border:2px solid var(--pink);border-radius:10px;background:var(--white);font-family:'Quicksand',sans-serif;font-size:.9rem;color:var(--brown);transition:border-color .2s}
+    input:focus,select:focus,textarea:focus{outline:none;border-color:var(--pink-deep)}
+    textarea{resize:vertical;min-height:90px}
+    .form-group{margin-bottom:1rem}
+    /* Footer */
+    footer{background:var(--brown);color:var(--cream);padding:2rem 1rem;text-align:center}
+    footer p{font-size:.85rem;opacity:.6}
+    footer a{color:var(--pink-deep)}
+    @media(max-width:640px){
+      .menu-icon{display:block!important;font-size:1.5rem}
+      .nav-links{display:none}
+    }
+    .mobile-nav{display:none}
+    @media(max-width:640px){
+      .mobile-nav.open{display:flex;flex-direction:column;position:fixed;top:56px;left:0;right:0;background:var(--cream);padding:1rem;border-bottom:2px solid var(--pink);gap:.8rem;z-index:99}
+      .menu-icon{display:block!important}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Magnolia Made <span>✦ CT</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#cookies">Cookies</a></li>
+        <li><a href="#process">How It Works</a></li>
+        <li><a href="#contact" class="nav-cta">Order</a></li>
+      </ul>
+      <span class="menu-icon" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</span>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#about">About</a>
+      <a href="#cookies">Cookies</a>
+      <a href="#process">How It Works</a>
+      <a href="#contact" class="nav-cta">Order</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-badge">🏡 Connecticut Home Bakery</div>
+    <h1>Beautiful Cookies<br>for <em>Every Occasion</em></h1>
+    <p>Handmade artisanal sugar cookies, baked-to-order in our kitchen. Custom designs for birthdays, weddings, holidays, and absolutely no reason at all.</p>
+    <div class="btn-group">
+      <a href="#contact" class="btn btn-primary">Place an Order</a>
+      <a href="#cookies" class="btn btn-secondary">See What We Make</a>
+    </div>
+    <div class="cookie-showcase">
+      <div class="cookie-dot"><span>🎂</span></div>
+      <div class="cookie-dot"><span>💍</span></div>
+      <div class="cookie-dot"><span>🍂</span></div>
+      <div class="cookie-dot"><span>🎁</span></div>
+      <div class="cookie-dot"><span>✨</span></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="inner">
+      <div class="about-wrap">
+        <div class="about-photo">
+          <div class="emoji">👩‍🍳</div>
+          <p>Laura in her kitchen</p>
+        </div>
+        <div class="about-text">
+          <div class="label">Our Story</div>
+          <h2>Hi, I'm <em>Laura</em>!</h2>
+          <p>I've been baking since I was tall enough to reach the counter. A few years ago, I started making custom sugar cookies for my kids' birthdays — and fell in love with the craft.</p>
+          <p>Every cookie is rolled, decorated, and packed by hand in our Connecticut kitchen. <strong>I'd love to make something beautiful for you.</strong></p>
+          <span class="about-signature">— Laura 🍪</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cookies">
+    <div class="inner">
+      <div class="label">What We Make</div>
+      <h2>Artisanal Sugar Cookies, <em>Made to Order</em></h2>
+      <p style="max-width:550px;color:var(--brown-light);font-size:.95rem;margin-bottom:.5rem">Buttery, vanilla-scented, hand-piped royal icing. Nothing frozen — just beautiful cookies made fresh for you.</p>
+      <div class="cookie-grid">
+        <div class="c-item"><div class="emoji">🎂</div><h3>Celebrations</h3><p>Birthdays, baby showers, graduations — custom colors &amp; themes.</p></div>
+        <div class="c-item"><div class="emoji">💍</div><h3>Weddings</h3><p>Elegant favors &amp; dessert table cookies for your special day.</p></div>
+        <div class="c-item"><div class="emoji">🍂</div><h3>Seasonal</h3><p>Florals, leaves, snowflakes — designs that match the season.</p></div>
+        <div class="c-item"><div class="emoji">🎁</div><h3>Gift Boxes</h3><p>Beautifully packaged sets, ready to give. 6, 12, or more.</p></div>
+        <div class="c-item"><div class="emoji">🏫</div><h3>Events</h3><p>School parties, fundraisers, corporate — larger orders welcome.</p></div>
+        <div class="c-item"><div class="emoji">💝</div><h3>Just Because</h3><p>You don't need a reason. Treat yourself or someone you love.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="inner">
+      <div class="label">How It Works</div>
+      <h2>So Easy &emsp;🍪</h2>
+      <div class="process-grid">
+        <div class="p-card"><div class="num">1</div><h3>Reach Out</h3><p>Fill in the form with your occasion, timeline, and any ideas.</p></div>
+        <div class="p-card"><div class="num">2</div><h3>We Chat</h3><p>Laura follows up to finalize the design and pricing.</p></div>
+        <div class="p-card"><div class="num">3</div><h3>Baked Fresh</h3><p>Your cookies are handmade to order with care.</p></div>
+        <div class="p-card"><div class="num">4</div><h3>Enjoy</h3><p>Local pickup in CT. Ask about delivery options!</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="inner">
+      <div class="contact-flex">
+        <div class="contact-info">
+          <div class="label">Get in Touch</div>
+          <h2>Let's Make <em>Something Sweet</em></h2>
+          <p>Got an event coming up? A gift idea? Not sure yet — just curious? I'd love to hear from you.</p>
+          <div class="detail"><span>📍</span><div><strong>Location</strong>Connecticut — local pickup available</div></div>
+          <div class="detail"><span>⏰</span><div><strong>Lead Time</strong>1–2 weeks for custom orders</div></div>
+          <div class="detail"><span>📦</span><div><strong>Minimum Order</strong>Typically 12 cookies</div></div>
+          <div class="detail"><span>🌿</span><div><strong>Ingredients</strong>Contains wheat, eggs, dairy, soy</div></div>
+        </div>
+        <form method="POST" action="https://formspree.io/f/YOUR_FORM_ID">
+          <div class="form-row">
+            <div class="form-group"><label>First Name *</label><input type="text" name="firstName" required placeholder="Your name" /></div>
+            <div class="form-group"><label>Last Name</label><input type="text" name="lastName" placeholder="Last name" /></div>
+          </div>
+          <div class="form-group"><label>Email *</label><input type="email" name="email" required placeholder="you@email.com" /></div>
+          <div class="form-row">
+            <div class="form-group"><label>Occasion</label>
+              <select name="occasion"><option value="">Select…</option><option>Birthday</option><option>Wedding</option><option>Baby Shower</option><option>Holiday</option><option>Gift</option><option>Just Because</option></select></div>
+            <div class="form-group"><label>Quantity</label>
+              <select name="quantity"><option>12–24</option><option>25–48</option><option>49–72</option><option>72+</option></select></div>
+          </div>
+          <div class="form-group"><label>Your Idea</label><textarea name="message" placeholder="Colors, theme, date, any reference ideas…"></textarea></div>
+          <button type="submit" class="btn btn-primary" style="width:100%">Send ✨</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Magnolia Made Cookies — Connecticut. Made with 🌸 by Laura. &bull; <a href="https://red5standinby.github.io/magnolia-made-cookies/">magnoliamadecookies.com</a></p>
+  </footer>
+</body>
+</html>

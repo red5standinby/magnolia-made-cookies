@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magnolia Made Cookies — Connecticut</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--oat:#F3EFE9;--flax:#E8E0D5;--linen:#DCD3C8;--slate:#6B625A;--charcoal:#2D2824;--cream:#FAF7F3;--white:#FDFCFA;--honey:#C9A96E;--honey-light:#DFC89E;--sage:#9EAE8F}
+    html{scroll-behavior:smooth}
+    body{font-family:'Jost',sans-serif;color:var(--charcoal);background:var(--oat);line-height:1.7;font-weight:300;font-size:17px}
+    a{color:inherit;text-decoration:none}
+    /* Nav */
+    nav{position:sticky;top:0;z-index:100;background:rgba(250,247,243,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--flax);padding:0 1.5rem}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+    .nav-logo{font-family:'Libre Baskerville',serif;font-size:1rem;color:var(--charcoal);font-weight:400;letter-spacing:.01em}.nav-logo span{display:block;font-family:'Jost',sans-serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--slate);font-weight:400}
+    .nav-links{display:flex;gap:1.5rem;list-style:none}
+    .nav-links a{font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);transition:color .2s}
+    .nav-links a:hover{color:var(--charcoal)}
+    .nav-cta{background:var(--charcoal);color:var(--cream)!important;padding:.3rem 1.2rem;border-radius:2px;font-weight:500!important}
+    .nav-cta:hover{background:var(--slate)!important}
+    @media(max-width:640px){.nav-links{display:none}}
+    /* Hero */
+    .hero{padding:6rem 1.5rem 4rem;text-align:center;background:var(--cream)}
+    .hero-badge{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--honey);font-weight:600;margin-bottom:1rem}
+    .hero h1{font-family:'Libre Baskerville',serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:400;line-height:1.15;color:var(--charcoal);margin-bottom:1rem;letter-spacing:-.01em}
+    .hero h1 em{font-style:italic;color:var(--honey)}
+    .hero p{font-size:1rem;color:var(--slate);max-width:500px;margin:0 auto 2rem;line-height:1.8}
+    .btn{display:inline-block;font-family:'Jost',sans-serif;font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.8rem 2rem;border:none;cursor:pointer;transition:all .2s}
+    .btn-primary{background:var(--charcoal);color:var(--cream)}.btn-primary:hover{background:var(--slate)}
+    .btn-secondary{background:transparent;color:var(--charcoal);border:1px solid var(--linen)}.btn-secondary:hover{border-color:var(--honey);color:var(--honey)}
+    .btn-group{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .hero-img{margin:2.5rem auto 0;max-width:400px;background:var(--flax);border-radius:24px;padding:2rem;display:flex;justify-content:center;gap:.75rem;flex-wrap:wrap}
+    .hero-img span{font-size:2.5rem;opacity:.7}
+    /* Sections */
+    section{padding:5rem 1.5rem}
+    .inner{max-width:1000px;margin:0 auto}
+    .label{display:inline-block;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--honey);font-weight:600;margin-bottom:.5rem;border-bottom:2px solid var(--honey-light);padding-bottom:.35rem}
+    h2{font-family:'Libre Baskerville',serif;font-size:clamp(1.5rem,3vw,2.4rem);font-weight:400;color:var(--charcoal);line-height:1.25;margin-bottom:1rem}
+    h2 em{font-style:italic;color:var(--honey)}
+    /* About */
+    #about{background:var(--white)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+    @media(max-width:768px){.about-grid{grid-template-columns:1fr;gap:2rem}}
+    .about-photo{background:var(--flax);border-radius:24px;aspect-ratio:3/4;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem}
+    .about-photo .emoji{font-size:3rem;margin-bottom:.5rem}
+    .about-photo p{font-family:'Libre Baskerville',serif;font-size:.95rem;color:var(--slate);font-style:italic}
+    .about-text p{font-size:.9rem;color:var(--slate);margin-bottom:.8rem;line-height:1.8}
+    .about-text strong{color:var(--charcoal)}
+    .about-signature{font-family:'Libre Baskerville',serif;font-style:italic;font-size:1.2rem;color:var(--honey);margin-top:1rem;display:block}
+    /* Cookies */
+    #cookies{background:var(--oat)}
+    .cookie-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:2rem;background:var(--flax);border-radius:16px;overflow:hidden}
+    @media(max-width:640px){.cookie-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:400px){.cookie-grid{grid-template-columns:1fr}}
+    .c-item{background:var(--white);padding:1.75rem 1.5rem;transition:background .2s}
+    .c-item:hover{background:var(--cream)}
+    .c-item .icon{font-size:1.8rem;margin-bottom:.5rem}
+    .c-item h3{font-family:'Libre Baskerville',serif;font-size:1rem;font-weight:400;margin-bottom:.3rem}
+    .c-item p{font-size:.8rem;color:var(--slate);line-height:1.6}
+    /* Process */
+    #process{background:var(--cream)}
+    .process-strip{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap}
+    .p-card{flex:1;min-width:180px;text-align:center;padding:1.5rem}
+    .p-card .num{font-family:'Libre Baskerville',serif;font-size:2rem;color:var(--honey);line-height:1;margin-bottom:.5rem}
+    .p-card h3{font-family:'Libre Baskerville',serif;font-size:.95rem;font-weight:400;margin-bottom:.3rem}
+    .p-card p{font-size:.8rem;color:var(--slate);line-height:1.5}
+    /* Contact */
+    #contact{background:var(--white);border-top:1px solid var(--flax)}
+    .contact-flex{display:flex;gap:3rem;flex-wrap:wrap}
+    .contact-info{flex:1;min-width:240px}
+    .contact-info p{font-size:.85rem;color:var(--slate);line-height:1.8;margin-bottom:1.5rem}
+    .detail{display:flex;gap:.5rem;margin-bottom:.6rem;font-size:.85rem;color:var(--slate)}
+    .detail strong{display:block;font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--charcoal);margin-bottom:.05rem}
+    form{flex:2;min-width:280px;background:var(--oat);border-radius:16px;padding:2rem}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    @media(max-width:500px){.form-row{grid-template-columns:1fr}}
+    label{display:block;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--charcoal);margin-bottom:.25rem}
+    input,select,textarea{width:100%;padding:.75rem 1rem;background:var(--white);border:1px solid var(--linen);border-radius:8px;font-family:'Jost',sans-serif;font-size:.9rem;color:var(--charcoal);transition:border-color .2s}
+    input:focus,select:focus,textarea:focus{outline:none;border-color:var(--honey);box-shadow:0 0 0 2px rgba(201,169,110,.15)}
+    textarea{resize:vertical;min-height:90px}
+    .form-group{margin-bottom:1rem}
+    input::placeholder,textarea::placeholder{color:var(--slate);opacity:.4}
+    /* Footer */
+    footer{background:var(--charcoal);color:var(--cream);padding:2.5rem 1.5rem 1.5rem;text-align:center}
+    footer p{font-size:.8rem;opacity:.5;font-weight:300}
+    footer a{color:var(--honey-light)}
+    @media(max-width:640px){
+      .menu-icon{display:block!important;font-size:1.4rem}
+      .nav-links{display:none}
+    }
+    .mobile-nav{display:none}
+    @media(max-width:640px){
+      .mobile-nav.open{display:flex;flex-direction:column;position:fixed;top:60px;left:0;right:0;background:var(--cream);padding:1rem;border-bottom:1px solid var(--flax);gap:.8rem;z-index:99}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Magnolia Made<span>Connecticut</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#cookies">Cookies</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact" class="nav-cta">Order</a></li>
+      </ul>
+      <span class="menu-icon" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</span>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#about">About</a>
+      <a href="#cookies">Cookies</a>
+      <a href="#process">Process</a>
+      <a href="#contact" class="nav-cta">Order</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-badge">✦ Connecticut Home Bakery</div>
+    <h1>Beautiful Cookies<br>for <em>Every Moment</em></h1>
+    <p>Handmade artisanal sugar cookies, baked to order in our kitchen. Custom designs for birthdays, weddings, holidays — and no reason at all.</p>
+    <div class="btn-group">
+      <a href="#contact" class="btn btn-primary">Place an Order</a>
+      <a href="#cookies" class="btn btn-secondary">Our Cookies</a>
+    </div>
+    <div class="hero-img">
+      <span>🎂</span><span>💍</span><span>🍂</span><span>🎁</span><span>✨</span>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="inner">
+      <div class="about-grid">
+        <div class="about-photo">
+          <div class="emoji">🌸</div>
+          <p>Laura, in her kitchen</p>
+        </div>
+        <div class="about-text">
+          <div class="label">Our Story</div>
+          <h2>Hi, I'm <em>Laura</em>.</h2>
+          <p>I've been baking since I was tall enough to reach the counter — standing in my grandmother's Hartford kitchen. A few years ago, I started making custom sugar cookies for my kids' birthdays.</p>
+          <p>What started as a weekend project became something more. The precision of royal icing. The way dough becomes art. The look on someone's face when they open the box. <strong>I'd love to make something beautiful for you.</strong></p>
+          <span class="about-signature">— Laura</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cookies">
+    <div class="inner">
+      <div class="label">What We Make</div>
+      <h2>Artisanal Sugar Cookies, <em>Made to Order</em></h2>
+      <p style="max-width:540px;color:var(--slate);font-size:.9rem;margin-bottom:1rem">Buttery, vanilla-scented, finished with hand-piped royal icing. Nothing mass-produced.</p>
+      <div class="cookie-grid">
+        <div class="c-item"><div class="icon">🎂</div><h3>Celebrations</h3><p>Birthdays, baby showers, graduations — custom colors &amp; themes.</p></div>
+        <div class="c-item"><div class="icon">💍</div><h3>Weddings</h3><p>Elegant favors &amp; dessert table cookies, fully personalized.</p></div>
+        <div class="c-item"><div class="icon">🍂</div><h3>Seasonal</h3><p>Florals, leaves, snowflakes — designs that match the season.</p></div>
+        <div class="c-item"><div class="icon">🎁</div><h3>Gift Boxes</h3><p>Beautifully packaged sets. Ribbon, tissue, ready to give.</p></div>
+        <div class="c-item"><div class="icon">🏫</div><h3>Events</h3><p>School, corporate, fundraisers — larger orders welcome.</p></div>
+        <div class="c-item"><div class="icon">✨</div><h3>Just Because</h3><p>You don't need a reason. A box of cookies says it all.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="inner">
+      <div class="label">How It Works</div>
+      <h2>Simple & Personal</h2>
+      <div class="process-strip">
+        <div class="p-card"><div class="num">01</div><h3>Reach Out</h3><p>Fill in the form with your occasion, timeline, and ideas.</p></div>
+        <div class="p-card"><div class="num">02</div><h3>We Chat</h3><p>Laura follows up to finalize the design and pricing.</p></div>
+        <div class="p-card"><div class="num">03</div><h3>Baked Fresh</h3><p>Your cookies are made to order, decorated by hand.</p></div>
+        <div class="p-card"><div class="num">04</div><h3>Pickup or Delivery</h3><p>Local pickup in CT. Ask about delivery options.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="inner">
+      <div class="contact-flex">
+        <div class="contact-info">
+          <div class="label">Get in Touch</div>
+          <h2>Let's Make <em>Something Sweet</em></h2>
+          <p>Event coming up? Gift to give? Not sure what you need? I'd love to hear from you.</p>
+          <div class="detail"><span>📍</span><div><strong>Location</strong>Connecticut — local pickup available</div></div>
+          <div class="detail"><span>⏰</span><div><strong>Lead Time</strong>1–2 weeks for custom orders</div></div>
+          <div class="detail"><span>📦</span><div><strong>Minimum</strong>Typically 12 cookies</div></div>
+          <div class="detail"><span>🌿</span><div><strong>Ingredients</strong>Contains wheat, eggs, dairy, soy</div></div>
+        </div>
+        <form method="POST" action="https://formspree.io/f/YOUR_FORM_ID">
+          <div class="form-row">
+            <div class="form-group"><label>First Name *</label><input type="text" name="firstName" required placeholder="Your name" /></div>
+            <div class="form-group"><label>Last Name</label><input type="text" name="lastName" placeholder="Last name" /></div>
+          </div>
+          <div class="form-group"><label>Email *</label><input type="email" name="email" required placeholder="you@email.com" /></div>
+          <div class="form-row">
+            <div class="form-group"><label>Occasion</label>
+              <select name="occasion"><option value="">Select…</option><option>Birthday</option><option>Wedding</option><option>Baby Shower</option><option>Holiday</option><option>Gift</option><option>Just Because</option></select></div>
+            <div class="form-group"><label>Quantity</label>
+              <select name="quantity"><option>12–24</option><option>25–48</option><option>49–72</option><option>72+</option></select></div>
+          </div>
+          <div class="form-group"><label>Your Idea</label><textarea name="message" placeholder="Colors, theme, event date, any reference ideas…"></textarea></div>
+          <button type="submit" class="btn btn-primary" style="width:100%">Send Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Magnolia Made Cookies — Connecticut. Made with 🌸 by Laura. &bull; <a href="https://red5standinby.github.io/magnolia-made-cookies/">magnoliamadecookies.com</a></p>
+  </footer>
+</body>
+</html>
