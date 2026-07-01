@@ -3,3 +3,8 @@
 *.key
 .env
 node_modules/
+.claude/
+handoff/
+*.zip
+Art/header-image-*.webp
+Art/logo.png
