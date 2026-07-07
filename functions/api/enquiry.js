@@ -1,4 +1,4 @@
-const TO_ADDRESS = "hello@magnoliamadecookies.com";
+const TO_ADDRESS = "lauraclements3@gmail.com";
 const FROM_ADDRESS = "Magnolia Made Cookies <hello@magnoliamadecookies.com>";
 
 function escapeHtml(str) {
