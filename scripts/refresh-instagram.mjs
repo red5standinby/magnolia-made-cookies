@@ -185,6 +185,9 @@ function deploy() {
   sh("mkdir", ["-p", tmp]);
   sh("cp", ["index.html", path.join(tmp, "index.html")]);
   sh("cp", ["-r", "functions", tmp]);
+  // The grid references images/…, so those files MUST ship. Omitting them makes
+  // every <img> fall through to the SPA catch-all and render as a broken image.
+  sh("cp", ["-R", "images", tmp]);
 
   const out = execFileSync(
     "npx",
@@ -197,6 +200,27 @@ function deploy() {
   );
   const url = (out.match(/https:\/\/([a-z0-9]+)\.magnolia-made-cookies\.pages\.dev/) || [])[0];
   return url || "(deployed)";
+}
+
+/**
+ * Verify every referenced image actually serves as an image, not the SPA
+ * catch-all. A Pages SPA returns 200 HTML for missing paths, so a bare status
+ * check is not enough.
+ */
+async function verifyLive(posts) {
+  const failures = [];
+  for (const p of posts.slice(0, 3)) {
+    const url = `https://magnoliamadecookies.com/images/${p.sc}.jpg`;
+    try {
+      const res = await fetch(url, { method: "HEAD" });
+      const type = res.headers.get("content-type") || "";
+      if (!res.ok || !type.startsWith("image/")) failures.push(`${p.sc}: ${res.status} ${type}`);
+    } catch (err) {
+      failures.push(`${p.sc}: ${err.message}`);
+    }
+  }
+  if (failures.length) throw new Error(`live image check failed — ${failures.join("; ")}`);
+  log("verified: images serve as image/*");
 }
 
 async function main() {
@@ -231,6 +255,8 @@ async function main() {
 
   const url = deploy();
   log(`deployed: ${url}`);
+
+  await verifyLive(posts);
 
   try {
     sh("git", ["-c", "http.version=HTTP/1.1", "push", "-q", "origin", "gh-pages"]);
