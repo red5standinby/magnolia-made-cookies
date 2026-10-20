@@ -218,9 +218,9 @@ async function main() {
     return;
   }
 
-  sh("git", ["add", "-A", "index.html", "images"]);
-  const status = sh("git", ["status", "--porcelain"]).trim();
-  if (!status) {
+  sh("git", ["add", "index.html", "images"]);
+  const staged = sh("git", ["diff", "--cached", "--name-only"]).trim();
+  if (!staged) {
     log("no changes — feed already current");
     return;
   }
