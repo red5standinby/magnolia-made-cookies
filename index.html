@@ -145,38 +145,81 @@
   </section>
 
   <!-- ============ INSTAGRAM ============ -->
-  <section id="instagram" style="display:none;min-height:100vh;align-items:center;background:#F8EEF2;border-top:1px solid #ecdbe3;border-bottom:1px solid #ecdbe3;padding:120px 46px;">
-    <div class="mm-reveal" style="max-width:860px;margin:0 auto;width:100%;text-align:center;">
+  <section id="instagram" style="min-height:100vh;display:flex;align-items:center;background:#F8EEF2;border-top:1px solid #ecdbe3;border-bottom:1px solid #ecdbe3;padding:120px 46px;">
+    <style>
+      .ig-cell{position:relative;display:block;width:100%;aspect-ratio:1;overflow:hidden;border-radius:4px;background:#efdfe6;box-shadow:0 8px 22px rgba(70,50,57,.07);}
+      .ig-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.22,.61,.36,1);}
+      .ig-cell:hover img,.ig-cell:focus-visible img{transform:scale(1.06);}
+      .ig-cell-ov{position:absolute;inset:0;display:flex;align-items:flex-end;padding:16px;
+        background:linear-gradient(to top,rgba(70,50,57,.72),rgba(70,50,57,.12) 55%,transparent);
+        opacity:0;transition:opacity .3s ease;}
+      .ig-cell:hover .ig-cell-ov,.ig-cell:focus-visible .ig-cell-ov{opacity:1;}
+      .ig-cell-cap{color:#F9EFF4;font-family:'Lora',serif;font-style:italic;font-size:15px;line-height:1.35;}
+      @media(hover:none){
+        .ig-cell-ov{opacity:1;background:linear-gradient(to top,rgba(70,50,57,.6),transparent 42%);padding:12px;}
+        .ig-cell-cap{font-size:13px;}
+      }
+      @media(max-width:760px){
+        #instagram{padding:84px 22px !important;}
+        .ig-feed-grid{grid-template-columns:repeat(2,1fr) !important;gap:10px !important;}
+      }
+      @media(prefers-reduced-motion:reduce){.ig-cell img{transition:none}}
+    </style>
+    <div style="max-width:860px;margin:0 auto;width:100%;text-align:center;">
       <span style="display:inline-block;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:#9a5f78;margin-bottom:16px;">Fresh from the oven</span>
       <a href="https://instagram.com/magnoliamadecookies" target="_blank" rel="noopener" style="display:block;font-family:'Lora',serif;font-style:italic;font-size:34px;color:#463239;text-decoration:none;">@magnoliamadecookies</a>
       <p style="margin:14px auto 34px;max-width:460px;font-size:15.5px;line-height:1.65;color:#6a565b;">A little peek at what&rsquo;s been coming out of the oven lately.</p>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
-        <div class="img-slot" style="width:100%;aspect-ratio:1;border-radius:4px;">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          <span>Cookie</span>
-        </div>
-        <div class="img-slot" style="width:100%;aspect-ratio:1;border-radius:4px;">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          <span>Cookie</span>
-        </div>
-        <div class="img-slot" style="width:100%;aspect-ratio:1;border-radius:4px;">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          <span>Cookie</span>
-        </div>
-        <div class="img-slot" style="width:100%;aspect-ratio:1;border-radius:4px;">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          <span>Cookie</span>
-        </div>
-        <div class="img-slot" style="width:100%;aspect-ratio:1;border-radius:4px;">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          <span>Cookie</span>
-        </div>
-        <div class="img-slot" style="width:100%;aspect-ratio:1;border-radius:4px;">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          <span>Cookie</span>
-        </div>
+      <div class="ig-feed-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+        <a class="ig-cell mm-reveal" href="https://www.instagram.com/p/DeotqCiKadP/" target="_blank" rel="noopener" aria-label="Sweet and spooky 🎃 — view on Instagram">
+          <img src="images/DeotqCiKadP.jpg" alt="Sweet and spooky 🎃" loading="lazy">
+          <span class="ig-cell-ov"><span class="ig-cell-cap">Sweet and spooky 🎃</span></span>
+        </a>
+        <a class="ig-cell mm-reveal" href="https://www.instagram.com/p/DeUIUhPK_Nq/" target="_blank" rel="noopener" aria-label="Fresh from the oven — view on Instagram">
+          <img src="images/DeUIUhPK_Nq.jpg" alt="Fresh from the oven" loading="lazy">
+          <span class="ig-cell-ov"><span class="ig-cell-cap">Fresh from the oven</span></span>
+        </a>
+        <a class="ig-cell mm-reveal" href="https://www.instagram.com/p/DdBwvwaK8ty/" target="_blank" rel="noopener" aria-label="A new season of cookies — view on Instagram">
+          <img src="images/DdBwvwaK8ty.jpg" alt="A new season of cookies" loading="lazy">
+          <span class="ig-cell-ov"><span class="ig-cell-cap">A new season of cookies</span></span>
+        </a>
+        <a class="ig-cell mm-reveal" href="https://www.instagram.com/p/DcmcL-pAWCc/" target="_blank" rel="noopener" aria-label="Some Bunny is ONE! 💕 — view on Instagram">
+          <img src="images/DcmcL-pAWCc.jpg" alt="Some Bunny is ONE! 💕" loading="lazy">
+          <span class="ig-cell-ov"><span class="ig-cell-cap">Some Bunny is ONE! 💕</span></span>
+        </a>
+        <a class="ig-cell mm-reveal" href="https://www.instagram.com/p/DcedDdOvThh/" target="_blank" rel="noopener" aria-label="It’s fun to be ONE! 🎈 — view on Instagram">
+          <img src="images/DcedDdOvThh.jpg" alt="It’s fun to be ONE! 🎈" loading="lazy">
+          <span class="ig-cell-ov"><span class="ig-cell-cap">It’s fun to be ONE! 🎈</span></span>
+        </a>
+        <a class="ig-cell mm-reveal" href="https://www.instagram.com/p/DcG8pWmlSHv/" target="_blank" rel="noopener" aria-label="Sweet 16 ✨ — view on Instagram">
+          <img src="images/DcG8pWmlSHv.jpg" alt="Sweet 16 ✨" loading="lazy">
+          <span class="ig-cell-ov"><span class="ig-cell-cap">Sweet 16 ✨</span></span>
+        </a>
+        <a class="ig-cell mm-reveal" href="https://www.instagram.com/p/DbwOLKEDy49/" target="_blank" rel="noopener" aria-label="ROAR I’m 4!! 🦖 — view on Instagram">
+          <img src="images/DbwOLKEDy49.jpg" alt="ROAR I’m 4!! 🦖" loading="lazy">
+          <span class="ig-cell-ov"><span class="ig-cell-cap">ROAR I’m 4!! 🦖</span></span>
+        </a>
+        <a class="ig-cell mm-reveal" href="https://www.instagram.com/p/DbcH6AbAhoX/" target="_blank" rel="noopener" aria-label="Just keep swimming… 🐟 — view on Instagram">
+          <img src="images/DbcH6AbAhoX.jpg" alt="Just keep swimming… 🐟" loading="lazy">
+          <span class="ig-cell-ov"><span class="ig-cell-cap">Just keep swimming… 🐟</span></span>
+        </a>
+        <a class="ig-cell mm-reveal" href="https://www.instagram.com/p/DbOAj0kgOFD/" target="_blank" rel="noopener" aria-label="✌️ out single digits! — view on Instagram">
+          <img src="images/DbOAj0kgOFD.jpg" alt="✌️ out single digits!" loading="lazy">
+          <span class="ig-cell-ov"><span class="ig-cell-cap">✌️ out single digits!</span></span>
+        </a>
+        <a class="ig-cell mm-reveal" href="https://www.instagram.com/p/DbMQO3Zv6mA/" target="_blank" rel="noopener" aria-label="Sugar cookies + ice cream 🍦 — view on Instagram">
+          <img src="images/DbMQO3Zv6mA.jpg" alt="Sugar cookies + ice cream 🍦" loading="lazy">
+          <span class="ig-cell-ov"><span class="ig-cell-cap">Sugar cookies + ice cream 🍦</span></span>
+        </a>
+        <a class="ig-cell mm-reveal" href="https://www.instagram.com/p/DbJvkuEvfGv/" target="_blank" rel="noopener" aria-label="Baking up a little sunshine ☀️ — view on Instagram">
+          <img src="images/DbJvkuEvfGv.jpg" alt="Baking up a little sunshine ☀️" loading="lazy">
+          <span class="ig-cell-ov"><span class="ig-cell-cap">Baking up a little sunshine ☀️</span></span>
+        </a>
+        <a class="ig-cell mm-reveal" href="https://www.instagram.com/p/DbHPp75PjQX/" target="_blank" rel="noopener" aria-label="Feels like Summertime 🍉 — view on Instagram">
+          <img src="images/DbHPp75PjQX.jpg" alt="Feels like Summertime 🍉" loading="lazy">
+          <span class="ig-cell-ov"><span class="ig-cell-cap">Feels like Summertime 🍉</span></span>
+        </a>
       </div>
-      <a href="https://instagram.com/magnoliamadecookies" target="_blank" rel="noopener" style="margin-top:30px;display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#463239;text-decoration:none;border-bottom:1px solid #F6BDD1;padding-bottom:4px;">Follow along on Instagram &rarr;</a>
+      <a href="https://instagram.com/magnoliamadecookies" target="_blank" rel="noopener" style="margin-top:34px;display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#463239;text-decoration:none;border-bottom:1px solid #F6BDD1;padding-bottom:4px;">Follow along on Instagram &rarr;</a>
     </div>
   </section>
 
