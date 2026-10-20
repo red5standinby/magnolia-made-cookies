@@ -186,6 +186,7 @@ export async function onRequestGet(context) {
   if (cached) return cached;
 
   const payloads = [];
+  const reasons = [];
 
   try {
     if (env && env.IG_ACCESS_TOKEN) {
@@ -193,6 +194,7 @@ export async function onRequestGet(context) {
     }
   } catch (err) {
     console.warn("[instagram] graph api failed:", err.message);
+    reasons.push("graph: " + err.message);
   }
 
   if (!payloads.length) {
@@ -200,6 +202,7 @@ export async function onRequestGet(context) {
       payloads.push(await fromScrape());
     } catch (err) {
       console.warn("[instagram] scrape failed:", err.message);
+      reasons.push("scrape: " + err.message);
     }
   }
 
@@ -210,8 +213,15 @@ export async function onRequestGet(context) {
       const body = await stale.json();
       return json({ ...body, stale: true }, { cacheSeconds: 0, staleSeconds: 0 });
     }
+    // Surface the failure reason when ?debug=1 so this is diagnosable from
+    // production without log access.
+    const debug = new URL(request.url).searchParams.get("debug") === "1";
     return json(
-      { error: "feed unavailable", posts: [] },
+      {
+        error: "feed unavailable",
+        posts: [],
+        ...(debug ? { reasons } : {}),
+      },
       { status: 503, cacheSeconds: 60, staleSeconds: 0 }
     );
   }
