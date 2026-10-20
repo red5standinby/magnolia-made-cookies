@@ -13,7 +13,7 @@
  */
 
 const USERNAME = "magnoliamadecookies";
-const MAX_POSTS = 12;
+const MAX_POSTS = 9;
 
 // How long a successful payload stays fresh at the edge.
 const FRESH_SECONDS = 60 * 30; // 30 min

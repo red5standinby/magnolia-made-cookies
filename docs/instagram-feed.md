@@ -13,7 +13,7 @@ The `#instagram` section on the home page pulls live posts from
 
 ## How a page load works
 
-1. The HTML ships with 12 baked-in cells, so the grid is never empty or broken —
+1. The HTML ships with 9 baked-in cells, so the grid is never empty or broken —
    it renders instantly, even with JS off or a cold cache.
 2. The page fetches `/api/instagram`. If it returns posts, the grid is swapped
    to the live set (skipped while the cursor is hovering a tile).
@@ -34,10 +34,20 @@ Tried in order:
    works unattended, but:
 
    > **Known limit:** Instagram's logged-out profile page only exposes the ~9
-   > most recent posts. The grid asks for 12. With the Graph API enabled you
-   > get all 12 (and are within Instagram's terms).
+   > most recent posts, so the grid is set to 9 (`MAX_POSTS`). Getting more
+   > requires the Graph API — and that requires the account to be Business or
+   > Creator, which `@magnoliamadecookies` currently is not. See below.
 
-## Adding the token (recommended, ~10 minutes)
+## Adding the token (only if you want more than 9 posts)
+
+> **Prerequisite:** the Instagram account must be **Business or Creator**.
+> `@magnoliamadecookies` is currently a *personal* account (`is_business_account:
+> false`), and the Graph API rejects personal accounts outright. Switching is
+> free and takes ~30 seconds in the app, and doesn't change how the profile
+> looks to followers — but it's a change to Laura's account, so get her OK first.
+>
+> Once switched: bump `MAX_POSTS` back to 12 (must stay a multiple of 3) and
+> restore the extra snapshot images in `images/`.
 
 1. Go to <https://developers.facebook.com/tools/explorer/> and pick
    *Instagram Graph API*.
@@ -57,7 +67,7 @@ In `functions/api/instagram.js`:
 
 - `FRESH_SECONDS` (default 30 min) — how long edge responses stay fresh.
 - `STALE_SECONDS` (default 7 days) — how long a stale payload may be served.
-- `MAX_POSTS` (default 12) — grid size; must be a multiple of 3 for a clean grid.
+- `MAX_POSTS` (default 9) — grid size; must be a multiple of 3 for a clean grid.
 
 ## Local preview
 
